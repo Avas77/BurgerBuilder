@@ -1,0 +1,226 @@
+.Home {
+  background-image: url("../../assets/burger.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.bun1 {
+  height: 80px;
+  width: 320px;
+  border: 1px solid rgb(222, 121, 38);
+  border-top-right-radius: 120px;
+  border-top-left-radius: 120px;
+  background-color: rgb(222, 121, 38);
+  background-image: radial-gradient(rgb(230, 190, 158) 7%, transparent 8%),
+    radial-gradient(rgb(230, 190, 158) 7%, transparent 9%),
+    radial-gradient(rgb(230, 190, 158) 7%, transparent 8%),
+    radial-gradient(rgb(230, 190, 158) 7%, transparent 8%),
+    radial-gradient(rgb(230, 190, 158) 7%, transparent 8%),
+    radial-gradient(rgb(230, 190, 158) 7%, transparent 8%),
+    radial-gradient(rgb(230, 190, 158) 7%, transparent 8%);
+  background-position: -150px -30px, -120px 20px, -60px -30px, 0px -80px,
+    60px -30px, 120px 20px, 150px -30px;
+  animation: jello 2s infinite;
+  margin-bottom: 10px;
+  margin-top: 50px;
+}
+
+.sauce {
+  border-top: 1px solid rgb(201, 47, 20);
+  border-bottom: 1px solid rgb(201, 47, 20);
+  height: 20px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  width: 320px;
+  background-color: rgb(201, 47, 20);
+  animation: jello 2s infinite;
+  margin-bottom: 5px;
+}
+.onion {
+  border-top: 1px solid rgb(141, 23, 173);
+  height: 20px;
+  width: 320px;
+  background-color: rgb(141, 23, 173);
+  animation: jello 2s infinite;
+  margin-bottom: 5px;
+}
+.lettuce {
+  border-top: 1px solid rgb(51, 184, 28);
+  border-bottom: 1px solid rgb(51, 184, 28);
+  height: 20px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  width: 320px;
+  background-color: rgb(51, 184, 28);
+  animation: jello 2s infinite;
+  margin-bottom: 5px;
+}
+.cheese {
+  border-top: 1px solid rgb(255, 183, 0);
+  border-bottom: 1px solid rgb(255, 183, 0);
+  height: 25px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  width: 320px;
+  background-color: rgb(255, 183, 0);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  z-index: 1;
+}
+.ham {
+  animation: jello 2s infinite;
+  border-top: 1px solid rgb(156, 47, 28);
+  border-bottom: 1px solid rgb(156, 47, 28);
+  height: 35px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  width: 320px;
+  background-color: rgb(156, 47, 28);
+  margin-bottom: 10px;
+}
+.bun2 {
+  border-top: 1px solid rgb(222, 121, 38);
+  border-bottom: 1px solid rgb(222, 121, 38);
+  border-bottom-right-radius: 70px;
+  border-bottom-left-radius: 70px;
+  background-color: rgb(222, 121, 38);
+  height: 70px;
+  width: 320px;
+  animation: jello 2s infinite;
+  margin-bottom: 25px;
+}
+.cheese::after {
+  content: "";
+  height: 0px;
+  width: 0px;
+  border-top: 70px solid rgb(255, 183, 0);
+  border-right: 80px solid transparent;
+  border-left: 80px solid transparent;
+  z-index: -1;
+  margin-right: 10px;
+}
+.cheese-melt {
+  z-index: -1;
+  height: 5px;
+  width: 25px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid rgb(255, 183, 0);
+  border-left: 1px solid rgb(255, 183, 0);
+  border-right: 1px solid rgb(255, 183, 0);
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  background-color: rgb(255, 183, 0);
+  animation-name: cheese;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-out;
+  margin-left: 5px;
+  margin-top: 4px;
+}
+.cheese-melt::before {
+  content: "";
+  z-index: -1;
+  height: 5px;
+  width: 25px;
+  border-top: 1px solid rgb(255, 183, 0);
+  border-bottom: 1px solid rgb(255, 183, 0);
+  border-left: 1px solid rgb(255, 183, 0);
+  border-right: 1px solid rgb(255, 183, 0);
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  background-color: rgb(255, 183, 0);
+  animation-name: cheese;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-out;
+}
+
+@keyframes cheese {
+  from {
+    height: 100px;
+  }
+}
+@keyframes jello {
+  11.1% {
+    transform: none;
+    transform: translateY(50px);
+  }
+  22.2% {
+    transform: skewX(-12.5deg) skewY(-12.5deg);
+  }
+  33.3% {
+    transform: skewX(6.25deg) skewY(6.25deg);
+  }
+  44.4% {
+    transform: skewX(-3.125deg) skewY(-3.125deg);
+  }
+  55.5% {
+    transform: skewX(1.5625deg) skewY(1.5625deg);
+  }
+  66.6% {
+    transform: skewX(-0.78125deg) skewY(-0.78125deg);
+  }
+  77.7% {
+    transform: skewX(0.390625deg) skewY(0.390625deg);
+  }
+  88.8% {
+    transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.heading-primary{
+  font-size: 40px;
+  font-weight: 300;
+  color: gray;
+  animation: moveUp .75s ease-out;
+}
+
+.btn:link, .btn:visited{
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 100px;
+  padding: 15px 40px;
+  display: inline-block;
+  background-color: #B07D62;
+  color: #fff;
+  animation: moveUp .7s ease-out .65s;
+  animation-fill-mode: backwards;
+}
+
+.btn:hover{
+  background-color: #9D6B53;
+  box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+
+@keyframes moveUp{
+  0%{
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100%{
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
