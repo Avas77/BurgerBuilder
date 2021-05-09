@@ -2,6 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   order: [],
+  purchased: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -14,6 +15,17 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         order: state.order.concat(newObject),
+        purchased: true,
+      };
+    case actionTypes.orderStart:
+      return {
+        ...state,
+        purchased: false,
+      };
+    case actionTypes.fetchOrdersSuccess:
+      return {
+        ...state,
+        order: action.orders,
       };
     default:
       return state;

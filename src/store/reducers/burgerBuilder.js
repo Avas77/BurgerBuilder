@@ -3,6 +3,7 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   ingredients: null,
   totalPrice: 4,
+  building: false,
 };
 
 const INGREDIENTS_PRICES = {
@@ -23,6 +24,7 @@ const reducer = (state = initialState, action) => {
         },
         totalPrice:
           state.totalPrice + INGREDIENTS_PRICES[action.ingredientName],
+        building: true,
       };
     case actionTypes.remove:
       return {
@@ -33,11 +35,14 @@ const reducer = (state = initialState, action) => {
         },
         totalPrice:
           state.totalPrice - INGREDIENTS_PRICES[action.ingredientName],
+        building: true,
       };
     case actionTypes.set:
       return {
         ...state,
         ingredients: action.ingredients,
+        totalPrice: 4,
+        building: false,
       };
     default:
       return state;

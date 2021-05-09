@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Order from "../../components/Order/Order";
-import axios from "../../axios-orders";
 import Layout from "../../components/Layout/Layout";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/index";
 
 export class Orders extends Component {
   state = {
@@ -9,28 +10,14 @@ export class Orders extends Component {
   };
 
   componentDidMount() {
-    const fetchedOrders = [];
-    axios
-      .get("/orders.json")
-      .then((res) => {
-        for (let key in res.data) {
-          fetchedOrders.push({
-            ...res.data[key],
-            id: key,
-          });
-        }
-        this.setState({ orders: fetchedOrders });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.props.onFetchOrders(this.props.token);
   }
 
   render() {
     return (
       <div>
         <Layout>
-          {this.state.orders.map((order) => {
+          {this.props.order.map((order) => {
             return (
               <Order
                 key={order.id}
@@ -45,4 +32,17 @@ export class Orders extends Component {
   }
 }
 
-export default Orders;
+const mapStateToProps = (state) => {
+  return {
+    order: state.order.order,
+    token: state.auth.token,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFetchOrders: (token) => dispatch(actions.fetchOrders(token)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Orders);

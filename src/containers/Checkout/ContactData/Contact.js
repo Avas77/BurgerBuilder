@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Button from "../../../components/UI/Button/Button";
 import "./Contact.css";
-import axios from "../../../axios-orders";
 import { withRouter } from "react-router-dom";
 import Input from "../../../components/UI/Input/Input";
 import { connect } from "react-redux";
@@ -106,7 +105,7 @@ export class Contact extends Component {
       price: this.props.price,
       orderData: formData,
     };
-    this.props.onOrderBurger(order);
+    this.props.onOrderBurger(order, this.props.token);
   };
 
   checkValidity(value, rules) {
@@ -189,12 +188,14 @@ const mapStateToProps = (state) => {
   return {
     ings: state.burger.ingredients,
     price: state.burger.totalPrice,
+    token: state.auth.token,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onOrderBurger: (orderData) => dispatch(actions.orderBurgerStart(orderData)),
+    onOrderBurger: (orderData, token) =>
+      dispatch(actions.orderBurgerStart(orderData, token)),
   };
 };
 
