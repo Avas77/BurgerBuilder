@@ -1,35 +1,38 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import Order from "../../components/Order/Order";
 import Layout from "../../components/Layout/Layout";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 
-export class Orders extends Component {
-  state = {
-    orders: [],
-  };
+function Orders(props) {
+  useEffect(() => {
+    props.onFetchOrders(props.token);
+  }, []);
 
-  componentDidMount() {
-    this.props.onFetchOrders(this.props.token);
-  }
-
-  render() {
-    return (
-      <div>
-        <Layout>
-          {this.props.order.map((order) => {
+  return (
+    <div>
+      <Layout>
+        {props.order ? (
+          props.order.map((order) => {
             return (
               <Order
                 key={order.id}
+                id={order.id}
                 ingredients={order.ingredients}
                 price={+order.price}
+                deleteHandler={props.onDeleteOrders}
               />
             );
-          })}
-        </Layout>
-      </div>
-    );
-  }
+          })
+        ) : (
+          <p>
+            Currently, you have no orders. Please place an order to view your
+            orders
+          </p>
+        )}
+      </Layout>
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => {
@@ -42,6 +45,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onFetchOrders: (token) => dispatch(actions.fetchOrders(token)),
+    onDeleteOrders: (id) => dispatch(actions.orderDelete(id)),
   };
 };
 

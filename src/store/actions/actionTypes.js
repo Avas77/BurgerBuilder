@@ -10,3 +10,4 @@ export const auth_Success = "AUTH_SUCCESS";
 export const auth_fail = "AUTH_FAIL";
 export const logout = "LOGOUT";
 export const SET_AUTH_REDIRECT_PATH = "SET_AUTH_REDIRECT_PATH";
+export const DELETE_ORDER = "DELETE_ORDER";

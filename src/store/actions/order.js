@@ -61,3 +61,20 @@ export const fetchOrders = (token) => {
       });
   };
 };
+
+export const orderDelete = (id) => {
+  const token = localStorage.getItem("token");
+  return (dispatch) => {
+    axios.delete(`/orders/${id}.json`).then((res) => {
+      console.log(res);
+    });
+    dispatch(orderDeleteStore(id));
+  };
+};
+
+export const orderDeleteStore = (id) => {
+  return {
+    type: actionTypes.DELETE_ORDER,
+    id,
+  };
+};

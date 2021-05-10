@@ -27,6 +27,17 @@ const reducer = (state = initialState, action) => {
         ...state,
         order: action.orders,
       };
+    case actionTypes.DELETE_ORDER:
+      // const index = state.order.findIndex((ord) => {
+      //   return ord.id === action.id;
+      // });
+      // console.log(index);
+      // return state.order.splice(index, 1);
+
+      return {
+        ...state,
+        order: state.order.filter((ord) => ord.id !== action.id),
+      };
     default:
       return state;
   }
